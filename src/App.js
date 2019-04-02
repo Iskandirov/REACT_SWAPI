@@ -157,7 +157,7 @@ class App extends Component {
 
         }
 
-        <StarWarsService zip={PLACES[activePlace].zip}></StarWarsService>
+        <StarWarsService zip={PLACES[activePlace].zip} key={activePlace}></StarWarsService>
 
       </div>
 
