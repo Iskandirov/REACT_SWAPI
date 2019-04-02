@@ -24,7 +24,7 @@ class StarWarsService extends Component {
 
     const zip = this.props.zip;
 
-    const apiURL = "https://swapi.co/api/planets/?page" + zip;
+    const apiURL = "https://swapi.co/api/planets/?page=" + zip;
 
 
     fetch(apiURL)
@@ -51,9 +51,9 @@ class StarWarsService extends Component {
 
     }
 
-    const starwars = starwarsData;
+    const starwars = starwarsData.results;
     return (
-      PLANETS.map((place, index) => (
+        starwars.map((place, index) => (
         <div>
 
           <h1>
@@ -62,17 +62,17 @@ class StarWarsService extends Component {
 
           </h1>
 
-          <p>Name: {starwarsData.results[index].name}</p>
+          <p>Name: {place.name}</p>
 
-          <p>Diametr: {starwarsData.results[index].diameter}</p>
+          <p>Diametr: {place.diameter }</p>
 
-          <p>Rotation: {starwarsData.results[index].rotation_period}</p>
+          <p>Rotation: {place.rotation_period}</p>
 
-          <p>Orbital: {starwarsData.results[index].orbital_period}</p>
+          <p>Orbital: {place.orbital_period}</p>
 
-          <p>Gravity: {starwarsData.results[index].gravity}</p>
+          <p>Gravity: {place.gravity}</p>
 
-          <p>Population: {starwarsData.results[index].population}</p>
+          <p>Population: {place.population}</p>
           <hr />
 
 
@@ -87,29 +87,7 @@ class StarWarsService extends Component {
 }
 
 
-const PLANETS = [
 
-  { name: "1", zip: "1" },
-
-  { name: "2", zip: "2" },
-
-  { name: "3", zip: "3" },
-
-  { name: "4", zip: "4" },
-
-  { name: "5", zip: "5" },
-
-  { name: "6", zip: "6" },
-
-  { name: "7", zip: "7" },
-
-  { name: "8", zip: "8" },
-
-  { name: "9", zip: "9" },
-
-  { name: "10", zip: "10" },
-
-];
 
 const PLACES = [
 
@@ -179,7 +157,7 @@ class App extends Component {
 
         }
 
-        <StarWarsService zip={PLACES[activePlace].zip} key={activePlace}></StarWarsService>
+        <StarWarsService zip={PLACES[activePlace].zip}></StarWarsService>
 
       </div>
 
